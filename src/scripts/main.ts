@@ -1,5 +1,22 @@
 import { translations, type Lang } from '../data/translations';
 
+const videoLoader = document.getElementById('videoLoader');
+const bgVideo = document.getElementById('bgVideo') as HTMLVideoElement | null;
+
+function hideVideoLoader() {
+  videoLoader?.classList.add('is-loaded');
+}
+
+if (bgVideo) {
+  if (bgVideo.readyState >= 2) {
+    hideVideoLoader();
+  } else {
+    bgVideo.addEventListener('loadeddata', hideVideoLoader, { once: true });
+  }
+} else {
+  hideVideoLoader();
+}
+
 const navbar = document.getElementById('navbar');
 
 function handleScroll() {
@@ -16,10 +33,9 @@ handleScroll();
 const hScrollWrapper = document.getElementById('hScrollWrapper');
 const hScrollTrack = document.getElementById('hScrollTrack');
 
-const PANEL_IDS = ['skills', 'proyectos', 'sobre-mi', 'formacion'];
-const PANEL_COUNT = PANEL_IDS.length;
+const SECTION_IDS = ['skills', 'proyectos', 'sobre-mi', 'formacion'];
+const PANEL_COUNT = SECTION_IDS.length;
 const MAX_SHIFT = ((PANEL_COUNT - 1) / PANEL_COUNT) * 100;
-const DWELL_RATIO = 0.15;
 
 const mobileQuery = window.matchMedia('(max-width: 1024px)');
 const isMobileScroll = () => mobileQuery.matches;
@@ -28,14 +44,11 @@ function updateHorizontalScroll() {
   if (!hScrollWrapper || !hScrollTrack || isMobileScroll()) return;
   const rect = hScrollWrapper.getBoundingClientRect();
   const scrollableDistance = hScrollWrapper.offsetHeight - window.innerHeight;
-  let rawProgress = scrollableDistance > 0 ? -rect.top / scrollableDistance : 0;
-  rawProgress = Math.min(Math.max(rawProgress, 0), 1);
-  const progress =
-    rawProgress < DWELL_RATIO ? 0 : (rawProgress - DWELL_RATIO) / (1 - DWELL_RATIO);
+  const progress = scrollableDistance > 0 ? Math.min(Math.max(-rect.top / scrollableDistance, 0), 1) : 0;
   hScrollTrack.style.transform = `translateX(-${progress * MAX_SHIFT}%)`;
 }
 
-window.addEventListener('scroll', updateHorizontalScroll);
+window.addEventListener('scroll', updateHorizontalScroll, { passive: true });
 window.addEventListener('resize', updateHorizontalScroll);
 updateHorizontalScroll();
 
@@ -49,7 +62,7 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     }
     const targetEl = document.getElementById(targetId);
     if (!targetEl) return;
-    const panelIndex = PANEL_IDS.indexOf(targetId);
+    const panelIndex = SECTION_IDS.indexOf(targetId);
 
     if (isMobileScroll() || panelIndex === -1 || !hScrollWrapper) {
       e.preventDefault();
@@ -61,8 +74,7 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     const wrapperTop = window.scrollY + hScrollWrapper.getBoundingClientRect().top;
     const scrollableDistance = hScrollWrapper.offsetHeight - window.innerHeight;
     const targetFraction = panelIndex / (PANEL_COUNT - 1);
-    const rawProgress = DWELL_RATIO + targetFraction * (1 - DWELL_RATIO);
-    const destination = wrapperTop + rawProgress * scrollableDistance;
+    const destination = wrapperTop + targetFraction * scrollableDistance;
     window.scrollTo({ top: destination, behavior: 'smooth' });
   });
 });
@@ -79,7 +91,7 @@ const revealObserver = new IntersectionObserver(
 revealElements.forEach((el) => revealObserver.observe(el));
 
 const navSectionLinks = new Map<string, HTMLAnchorElement>();
-PANEL_IDS.concat('contacto').forEach((id) => {
+SECTION_IDS.concat('contacto').forEach((id) => {
   const link = document.querySelector<HTMLAnchorElement>(`.nav-links a[href="#${id}"]`);
   if (link) navSectionLinks.set(id, link);
 });

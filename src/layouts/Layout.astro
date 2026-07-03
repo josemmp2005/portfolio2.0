@@ -13,6 +13,7 @@ const { title = 'Portfolio Dev' } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,7 +23,18 @@ const { title = 'Portfolio Dev' } = Astro.props;
     />
   </head>
   <body>
-    <video class="bg-video" autoplay muted loop playsinline>
+    <div class="video-loader" id="videoLoader">
+      <svg class="loader-flower" viewBox="0 0 24 24" width="40" height="40">
+        <g fill="none" stroke="currentColor" stroke-width="1">
+          <ellipse cx="12" cy="7" rx="2" ry="4"></ellipse>
+          <ellipse cx="12" cy="7" rx="2" ry="4" transform="rotate(72 12 12)"></ellipse>
+          <ellipse cx="12" cy="7" rx="2" ry="4" transform="rotate(144 12 12)"></ellipse>
+          <ellipse cx="12" cy="7" rx="2" ry="4" transform="rotate(216 12 12)"></ellipse>
+          <ellipse cx="12" cy="7" rx="2" ry="4" transform="rotate(288 12 12)"></ellipse>
+        </g>
+      </svg>
+    </div>
+    <video class="bg-video" id="bgVideo" autoplay muted loop playsinline>
       <source src="/video/Animated_Japanese_ukiyo-e_scene_202607031203.mp4" type="video/mp4" />
     </video>
     <Navbar />
