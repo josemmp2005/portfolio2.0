@@ -1,0 +1,44 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<article class="project-card reveal">
+  <img class="project-image" src={project.image} alt={project.alt} loading="lazy" />
+  <div class="project-overlay">
+    <div class="project-tech">
+      {project.tech.map((t: string) => (
+        <span class="tech-pill">{t}</span>
+      ))}
+    </div>
+    <h3>{project.title}</h3>
+    <p class="project-desc" data-i18n={project.descKey}>{project.description}</p>
+    {(project.github || project.web) && (
+      <div class="project-links">
+        {project.github && (
+          <a href={project.github} target="_blank" rel="noopener noreferrer" class="project-link">
+            <span data-i18n="projLinkCode">Código</span>
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M7 17L17 7"></path>
+              <path d="M9 7h8v8"></path>
+            </svg>
+          </a>
+        )}
+        {project.web && (
+          <a href={project.web} target="_blank" rel="noopener noreferrer" class="project-link">
+            <span data-i18n="projLinkWeb">Web</span>
+            <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M7 17L17 7"></path>
+              <path d="M9 7h8v8"></path>
+            </svg>
+          </a>
+        )}
+      </div>
+    )}
+  </div>
+</article>

@@ -1,0 +1,119 @@
+---
+import SectionFooter from './SectionFooter.astro';
+---
+
+<div class="h-panel" id="skills">
+  <div class="panel-inner">
+    <div class="skills-eyebrow reveal">
+      <span class="skills-index">01</span>
+      <span class="eyebrow-dash">&mdash;&mdash;</span>
+      <span data-i18n="skillsTitle">Skills</span>
+    </div>
+
+    <div class="skills-ornament reveal">
+      <span class="ornament-line"></span>
+      <svg class="ornament-flower" viewBox="0 0 24 24" width="14" height="14">
+        <g fill="none" stroke="currentColor" stroke-width="1">
+          <ellipse cx="12" cy="7" rx="2" ry="4"></ellipse>
+          <ellipse cx="12" cy="7" rx="2" ry="4" transform="rotate(72 12 12)"></ellipse>
+          <ellipse cx="12" cy="7" rx="2" ry="4" transform="rotate(144 12 12)"></ellipse>
+          <ellipse cx="12" cy="7" rx="2" ry="4" transform="rotate(216 12 12)"></ellipse>
+          <ellipse cx="12" cy="7" rx="2" ry="4" transform="rotate(288 12 12)"></ellipse>
+        </g>
+      </svg>
+      <span class="ornament-line"></span>
+    </div>
+
+    <h2 class="reveal" data-i18n="skillsTitle">Skills</h2>
+    <p class="skills-subtitle reveal" data-i18n="skillsSubtitle">Tecnologías con las que trabajo día a día</p>
+
+    <div class="skills-grid">
+      <div class="skill-category reveal">
+        <div class="skill-category-header">
+          <svg class="category-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M4 20 C 8 16, 10 12, 9 6"></path>
+            <path d="M9 10 C 11 9, 13 9, 14 7"></path>
+            <path d="M8 14 C 10 13, 12 13, 13 12"></path>
+            <circle cx="14" cy="7" r="1" fill="currentColor" stroke="none"></circle>
+          </svg>
+          <h3 data-i18n="catFrontend">Frontend</h3>
+        </div>
+        <ul class="skill-list">
+          <li><img src="/svg/html.svg" alt="" /><span>HTML</span></li>
+          <li><img src="/svg/css.svg" alt="" /><span>CSS</span></li>
+          <li><img src="/svg/js.svg" alt="" /><span>JavaScript</span></li>
+          <li><img src="/svg/react-2.svg" alt="" /><span>React</span></li>
+          <li><img src="/svg/astrojs.svg" alt="" /><span>Astro</span></li>
+        </ul>
+      </div>
+
+      <div class="skill-category reveal">
+        <div class="skill-category-header">
+          <svg class="category-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M6 16 C4 16 3 14.5 3 13 C3 11.3 4.3 10 6 10 C6.3 7.7 8.2 6 10.5 6 C12.9 6 14.8 7.9 15 10.2 C16.7 10.4 18 11.8 18 13.5 C18 15.4 16.4 17 14.5 17 H6.5"></path>
+          </svg>
+          <h3 data-i18n="catBackend">Backend &amp; Datos</h3>
+        </div>
+        <ul class="skill-list">
+          <li><img src="/svg/php.svg" alt="" /><span>PHP</span></li>
+          <li><img src="/svg/python.svg" alt="" /><span>Python</span></li>
+          <li><img src="/svg/mysql.svg" alt="" /><span>MySQL</span></li>
+          <li><img src="/svg/postgresql-icon.svg" alt="" /><span>PostgreSQL</span></li>
+        </ul>
+      </div>
+
+      <div class="skill-category reveal">
+        <div class="skill-category-header">
+          <svg class="category-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.2">
+            <line x1="9" y1="3" x2="9" y2="21"></line>
+            <line x1="6" y1="7" x2="12" y2="7"></line>
+            <line x1="6" y1="12" x2="12" y2="12"></line>
+            <line x1="6" y1="17" x2="12" y2="17"></line>
+            <path d="M9 3 C 11 4, 13 3, 14 1"></path>
+          </svg>
+          <h3 data-i18n="catHerramientas">Herramientas &amp; CMS</h3>
+        </div>
+        <ul class="skill-list">
+          <li><img src="/svg/wordpress-icon.svg" alt="" /><span>WordPress</span></li>
+          <li><img src="/svg/n8n-color.svg" alt="" /><span>N8N</span></li>
+          <li>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="6" cy="6" r="2"></circle>
+              <circle cx="6" cy="18" r="2"></circle>
+              <circle cx="18" cy="12" r="2"></circle>
+              <path d="M6 8 V16"></path>
+              <path d="M6 10 C6 12 8 12 10 12 H16"></path>
+            </svg>
+            <span>Git</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M8 4 C6 4 6 6 6 8 C6 10 4 10 4 12 C4 14 6 14 6 16 C6 18 6 20 8 20"></path>
+              <path d="M16 4 C18 4 18 6 18 8 C18 10 20 10 20 12 C20 14 18 14 18 16 C18 18 18 20 16 20"></path>
+            </svg>
+            <span data-i18n="skillApiRest">API REST</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="4" width="13" height="9" rx="1"></rect>
+              <rect x="17" y="8" width="5" height="9" rx="1"></rect>
+              <line x1="8" y1="16" x2="11" y2="16"></line>
+            </svg>
+            <span data-i18n="skillResponsive">Diseño Responsive</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+              <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+              <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+              <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+            </svg>
+            <span data-i18n="skillComponents">Componentes UI</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <SectionFooter />
+  </div>
+</div>

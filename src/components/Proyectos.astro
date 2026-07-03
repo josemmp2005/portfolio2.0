@@ -1,0 +1,26 @@
+---
+import { projects } from '../data/projects';
+import ProjectCard from './ProjectCard.astro';
+import SectionFooter from './SectionFooter.astro';
+---
+
+<div class="h-panel" id="proyectos">
+  <div class="panel-inner">
+    <div class="skills-eyebrow reveal">
+      <span class="skills-index">02</span>
+      <span class="eyebrow-dash">&mdash;&mdash;</span>
+      <span data-i18n="proyectosTitle">Proyectos</span>
+    </div>
+
+    <h2 class="reveal" data-i18n="proyectosTitle">Proyectos</h2>
+    <p class="skills-subtitle reveal" data-i18n="proyectosSubtitle">Algunos de los proyectos en los que he trabajado</p>
+
+    <div class="bento-grid">
+      {projects.map((project) => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+
+    <SectionFooter />
+  </div>
+</div>
