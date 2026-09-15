@@ -6,11 +6,20 @@ interface Props {
 }
 
 const { project } = Astro.props;
+const sizeClass = project.size ? `size-${project.size}` : '';
 ---
 
-<article class="project-card reveal">
+<article class={`project-card reveal ${sizeClass}`.trim()}>
   <img class="project-image" src={project.image} alt={project.alt} loading="lazy" />
   <div class="project-overlay">
+    {project.featured && (
+      <div class="project-featured-tag">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+          <path d="M12 2l2.2 7.2H22l-6.1 4.4 2.3 7.4L12 16.6 5.8 21l2.3-7.4L2 9.2h7.8z"></path>
+        </svg>
+        <span data-i18n="proyectosFeaturedLabel">Proyecto destacado</span>
+      </div>
+    )}
     <div class="project-tech">
       {project.tech.map((t: string) => (
         <span class="tech-pill">{t}</span>

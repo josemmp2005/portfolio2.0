@@ -20,8 +20,11 @@ export const translations: Record<Lang, Record<string, string>> = {
     skillComponents: 'Componentes UI',
     proyectosTitle: 'Proyectos',
     proyectosSubtitle: 'Algunos de los proyectos en los que he trabajado',
+    proyectosFeaturedLabel: 'Proyecto destacado',
     projLinkCode: 'Código',
     projLinkWeb: 'Web',
+    projNonnappDesc:
+      'Aplicación web que genera recetas con inteligencia artificial inspiradas en la cocina de la abuela: el usuario indica ingredientes o antojos y la IA propone recetas caseras paso a paso. Frontend en React con TypeScript, base de datos PostgreSQL en Neon, backend en Render y frontend en Netlify.',
     projFitopriceDesc:
       'Aplicación web para la gestión de precios de productos agrícolas. Permite consultar y comparar precios de proveedores y recibir alertas de cambios. Frontend en React, backend en Express y PostgreSQL en Supabase, con N8N para automatizaciones.',
     projMyhandstatsDesc:
@@ -71,8 +74,11 @@ export const translations: Record<Lang, Record<string, string>> = {
     skillComponents: 'UI Components',
     proyectosTitle: 'Projects',
     proyectosSubtitle: "Some of the projects I've worked on",
+    proyectosFeaturedLabel: 'Featured project',
     projLinkCode: 'Code',
     projLinkWeb: 'Web',
+    projNonnappDesc:
+      'Web app that generates AI recipes inspired by grandma\'s cooking: the user lists ingredients or cravings and the AI suggests step-by-step homemade recipes. React frontend with TypeScript, PostgreSQL database on Neon, backend deployed on Render and frontend on Netlify.',
     projFitopriceDesc:
       'Web app for managing agricultural product pricing. Lets users check and compare supplier prices and receive change alerts. React frontend, Express backend and PostgreSQL on Supabase, with N8N for automations.',
     projMyhandstatsDesc:

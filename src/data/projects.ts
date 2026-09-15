@@ -7,9 +7,25 @@ export interface Project {
   tech: string[];
   github: string | null;
   web: string | null;
+  /** Grid footprint inside the bento layout: 'lg' = 2x2, 'tall' = 1x2, unset = 1x1. */
+  size?: 'lg' | 'tall';
+  featured?: boolean;
 }
 
 export const projects: Project[] = [
+  {
+    title: 'Nonnapp',
+    description:
+      'Aplicación web que genera recetas con inteligencia artificial inspiradas en la cocina de la abuela: el usuario indica ingredientes o antojos y la IA propone recetas caseras paso a paso. Frontend en React con TypeScript, base de datos PostgreSQL en Neon, backend en Render y frontend en Netlify.',
+    descKey: 'projNonnappDesc',
+    image: '/images/nonnapp-proyecto.webp',
+    alt: 'Nonnapp',
+    tech: ['React', 'TypeScript', 'PostgreSQL', 'Neon', 'Render', 'Netlify'],
+    github: 'https://github.com/josemmp2005/nonnapp',
+    web: 'https://nonnap.netlify.app/',
+    size: 'lg',
+    featured: true,
+  },
   {
     title: 'FitoPrice',
     description:
@@ -20,6 +36,7 @@ export const projects: Project[] = [
     tech: ['React', 'Express', 'PostgreSQL', 'Supabase', 'N8N'],
     github: 'https://github.com/josemmp2005/fitoprice',
     web: 'https://fitoprice.netlify.app/',
+    size: 'tall',
   },
   {
     title: 'MyHandStats',
@@ -31,6 +48,7 @@ export const projects: Project[] = [
     tech: ['React', 'Python', 'PostgreSQL'],
     github: 'https://github.com/pmerida08/myHandStats',
     web: 'https://myhandstats.netlify.app/',
+    size: 'tall',
   },
   {
     title: 'ChurnPredict 360',

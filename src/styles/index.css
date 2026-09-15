@@ -661,8 +661,45 @@ h2 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 100px);
+    grid-auto-flow: dense;
     gap: 0.75rem;
     text-align: left;
+}
+
+/* Per-project footprint: 'lg' = 2x2 (used for the featured project),
+   'tall' = 1x2, unset = 1x1. Dense auto-flow packs whatever set of
+   projects is passed in, so adding or removing one never needs
+   hand-placed grid-column/grid-row rules. */
+
+.project-card.size-lg {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.project-card.size-tall {
+    grid-row: span 2;
+}
+
+.project-card.size-lg .project-overlay h3 {
+    font-size: 1.5rem;
+}
+
+/* The 1x1 cards are only 100px tall, so at desktop width they drop the
+   description and shrink the overlay to fit. Scoped to desktop only:
+   mobile stacks every card at a fixed 280px (see below) with room to spare. */
+@media (min-width: 1025px) {
+    .project-card:not(.size-lg):not(.size-tall) .project-overlay {
+        padding: 0.65rem;
+        gap: 0.3rem;
+    }
+
+    .project-card:not(.size-lg):not(.size-tall) .project-desc {
+        display: none;
+    }
+
+    .project-card:not(.size-lg):not(.size-tall) .project-overlay h3 {
+        font-size: 1rem;
+    }
 }
 
 .project-card {
@@ -684,56 +721,6 @@ h2 {
     z-index: 2;
 }
 
-
-/* 3x2 bento layout: card 1 wide top-left, card 2 tall bottom-left,
-   cards 3+4 split a single mid-bottom column, card 5 tall top-right,
-   card 6 tall bottom-right */
-
-.bento-grid .project-card:nth-child(1) {
-    grid-column: 1 / 3;
-    grid-row: 1 / 3;
-}
-
-.bento-grid .project-card:nth-child(2) {
-    grid-column: 1 / 2;
-    grid-row: 3 / 5;
-}
-
-.bento-grid .project-card:nth-child(3) {
-    grid-column: 2 / 3;
-    grid-row: 4 / 5;
-}
-
-.bento-grid .project-card:nth-child(4) {
-    grid-column: 2 / 3;
-    grid-row: 3 / 4;
-}
-
-.bento-grid .project-card:nth-child(5) {
-    grid-column: 3 / 4;
-    grid-row: 1 / 3;
-}
-
-.bento-grid .project-card:nth-child(6) {
-    grid-column: 3 / 4;
-    grid-row: 3 / 5;
-}
-
-.bento-grid .project-card:nth-child(3) .project-overlay,
-.bento-grid .project-card:nth-child(4) .project-overlay {
-    padding: 0.65rem;
-    gap: 0.3rem;
-}
-
-.bento-grid .project-card:nth-child(3) .project-desc,
-.bento-grid .project-card:nth-child(4) .project-desc {
-    display: none;
-}
-
-.bento-grid .project-card:nth-child(3) .project-overlay h3,
-.bento-grid .project-card:nth-child(4) .project-overlay h3 {
-    font-size: 1rem;
-}
 
 .bento-grid .project-card.reveal:nth-child(1) {
     transition-delay: 0.05s;
@@ -800,10 +787,6 @@ h2 {
     color: #fff;
 }
 
-.bento-grid .project-card:nth-child(1) .project-overlay h3 {
-    font-size: 1.5rem;
-}
-
 .project-desc {
     font-family: var(--font-body);
     font-size: 0.85rem;
@@ -824,6 +807,24 @@ h2 {
     gap: 0.35rem;
     opacity: 0;
     transition: opacity 0.25s ease;
+}
+
+.project-featured-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    width: fit-content;
+    font-family: var(--font-ui);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #e0685a;
+}
+
+.project-card.size-lg {
+    border: 1px solid rgba(224, 104, 90, 0.35);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
 
 .tech-pill {
@@ -880,8 +881,8 @@ h2 {
         gap: 1.25rem;
     }
     .bento-grid .project-card {
-        grid-column: 1 / -1 !important;
-        grid-row: auto !important;
+        grid-column: 1 / -1;
+        grid-row: auto;
         height: 280px;
     }
     .bento-grid .project-card .project-overlay,
@@ -892,19 +893,6 @@ h2 {
     }
     .bento-grid .project-card .project-overlay h3 {
         font-size: 1.3rem;
-    }
-    .bento-grid .project-card:nth-child(3) .project-desc,
-    .bento-grid .project-card:nth-child(4) .project-desc {
-        display: -webkit-box;
-    }
-    .bento-grid .project-card:nth-child(3) .project-overlay h3,
-    .bento-grid .project-card:nth-child(4) .project-overlay h3 {
-        font-size: 1.3rem;
-    }
-    .bento-grid .project-card:nth-child(3) .project-overlay,
-    .bento-grid .project-card:nth-child(4) .project-overlay {
-        padding: 0.9rem;
-        gap: 0.5rem;
     }
 }
 
