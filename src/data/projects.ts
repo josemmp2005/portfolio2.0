@@ -22,7 +22,7 @@ export const projects: Project[] = [
     alt: 'Nonnapp',
     tech: ['React', 'TypeScript', 'PostgreSQL', 'Neon', 'Render', 'Netlify'],
     github: 'https://github.com/josemmp2005/nonnapp',
-    web: 'https://nonnap.netlify.app/',
+    web: 'https://nonnapp.netlify.app/',
     size: 'lg',
     featured: true,
   },
